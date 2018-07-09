@@ -13,6 +13,8 @@ namespace AccountingDataManagement
         private string accountLeadingChar;
         private int accountIdLength;
         private List<Account> accounts;
+        private char defSeparator;
+        private Dictionary<string, int[]> transactionDef;
 
         public DataReader()
         {
@@ -20,6 +22,26 @@ namespace AccountingDataManagement
             accountIdLength = 4;
             accountLeadingChar = "-";
             accounts = new List<Account>();
+            defSeparator = ',';
+            transactionDef = new Dictionary<string, int[]>();
+        }
+
+        public void ReadTransactionDef(string fileName)
+        {
+            // Read transaction def into dictionary: var, start position, end position
+            StreamReader reader = new StreamReader(fileName);
+            string header = reader.ReadLine();
+
+            while (!reader.EndOfStream)
+            {
+                string[] line = reader.ReadLine().Split(defSeparator);
+                int[] pos = new int[2];
+                pos[0] = Convert.ToInt32(line[1]);
+                pos[1] = Convert.ToInt32(line[2]);
+                transactionDef.Add(line[0], pos);
+            }
+
+            reader = null;
         }
 
         public void ReadRawData(string fileName)
