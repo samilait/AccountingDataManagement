@@ -14,13 +14,19 @@ namespace AccountingDataManagement
 
         public Transaction(string id, string description, DateTime date, double debit, double kredit, double balance)
         {
-            this.id = id;
-            this.description = description;
-            this.date = date;
-            this.debit = debit;
-            this.kredit = kredit;
-            this.balance = balance;
+            this.Id = id;
+            this.Description = description;
+            this.Date = date;
+            this.Debit = debit;
+            this.Kredit = kredit;
+            this.Balance = balance;
         }
 
+        public string Id { get => id; set => id = value; }
+        public string Description { get => description; set => description = value; }
+        public DateTime Date { get => date; set => date = value; }
+        public double Debit { get => debit; set => debit = value; }
+        public double Kredit { get => kredit; set => kredit = value; }
+        public double Balance { get => balance; set => balance = value; }
     }
 }
