@@ -16,7 +16,10 @@ namespace AccountingDataManagement
             dataReader.ReadTransactionDef(fileName);
             fileName = @"C:\Users\Sami\Documents\HaKi\Harjun Kiekko ry  PAAKIRJA TP1 koko kausi clean v2.txt";
             dataReader.ReadRawData(fileName);
-            dataReader.GetAccounts();
+            Ledger ledger = dataReader.ParseAccountsTransactions(new Ledger(new DateTime(2017, 5, 31)));
+
+            fileName = @"C:\Users\Sami\Documents\HaKi\ledger.csv";
+            ledger.WriteLedgerToFile(fileName);
         }
     }
 }

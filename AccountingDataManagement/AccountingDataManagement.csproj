@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="DataReader.cs" />
+    <Compile Include="Ledger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transaction.cs" />

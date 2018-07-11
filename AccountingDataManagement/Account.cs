@@ -16,17 +16,20 @@ namespace AccountingDataManagement
 
         public Account(int id, string name)
         {
-            this.id = id;
-            this.name = name;
-            this.transactions = new List<Transaction>();
+            this.Id = id;
+            this.Name = name;
+            this.Transactions = new List<Transaction>();
         }
 
         public double StartBalance { get => startBalance; set => startBalance = value; }
         public double EndBalance { get => endBalance; set => endBalance = value; }
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
+        internal List<Transaction> Transactions { get => transactions; set => transactions = value; }
 
         public void AddTransaction(Transaction transaction)
         {
-            transactions.Add(transaction);
+            Transactions.Add(transaction);
         }
 
     }

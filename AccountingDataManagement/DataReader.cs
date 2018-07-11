@@ -77,7 +77,7 @@ namespace AccountingDataManagement
 
         }
 
-        public void GetAccounts()
+        public Ledger ParseAccountsTransactions(Ledger ledger)
         {
             Account account = null;
             int accountId = 0;
@@ -126,7 +126,7 @@ namespace AccountingDataManagement
                         endBalance = Convert.ToDouble(tmp);
                     }
                     account.EndBalance = endBalance;
-                    accounts.Add(accountId, account);
+                    ledger.AddAccount(accountId, account);
                     continue;
                 }
 
@@ -152,6 +152,8 @@ namespace AccountingDataManagement
 
             }
 
+            return ledger;
+
         }
 
         public DateTime GetDate(string row)
@@ -173,25 +175,6 @@ namespace AccountingDataManagement
         public string GetDefString(string def, string row)
         {
             return row.Substring((transactionDef[def])[0], (transactionDef[def])[1] - (transactionDef[def])[0]);
-        }
-
-        public void GetTransactions()
-        {
-            // Get transactions for each account
-            for (int i = 0; i < rawData.Count; i++)
-            {
-                string row = rawData[i];
-                if (row.Length > 0)
-                {
-                    if (row.Substring(0, accountIdLength).Equals(accountLeadingCheck))
-                    {
-                        string accountRow = rawData[i + 1];
-                        int accountId = Convert.ToInt32(accountRow.Substring(0, accountIdLength));
-                        Account account = accounts[accountId];
-                        
-                    }
-                }
-            }
         }
 
     }

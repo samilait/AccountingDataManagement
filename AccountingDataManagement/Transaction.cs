@@ -22,6 +22,11 @@ namespace AccountingDataManagement
             this.Balance = balance;
         }
 
+        public override string ToString()
+        {
+            return id + "," + description + "," + date.ToString("dd.MM.yyyy") + "," + debit + "," + kredit + "," + balance;
+        }
+
         public string Id { get => id; set => id = value; }
         public string Description { get => description; set => description = value; }
         public DateTime Date { get => date; set => date = value; }
